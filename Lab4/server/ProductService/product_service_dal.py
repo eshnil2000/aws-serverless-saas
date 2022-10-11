@@ -154,3 +154,14 @@ def __get_dynamodb_table(event, dynamodb):
         [type]: [description]
     """
     #TODO: Implement this method
+    def __get_dynamodb_table(event, dynamodb):    
+        accesskey = event['requestContext']['authorizer']['accesskey']
+        secretkey = event['requestContext']['authorizer']['secretkey']
+        sessiontoken = event['requestContext']['authorizer']['sessiontoken']    
+        dynamodb = boto3.resource('dynamodb',
+                    aws_access_key_id=accesskey,
+                    aws_secret_access_key=secretkey,
+                    aws_session_token=sessiontoken
+                    )        
+            
+        return dynamodb.Table(table_name)

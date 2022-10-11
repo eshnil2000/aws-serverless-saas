@@ -76,18 +76,18 @@ fi
 
 
 if [ "$IS_RUNNING_IN_EVENT_ENGINE" = false ]; then
-  ADMIN_SITE_URL=$(aws cloudformation describe-stacks --stack-name serverless-saas --query "Stacks[0].Outputs[?OutputKey=='AdminAppSite'].OutputValue" --output text)
-  LANDING_APP_SITE_URL=$(aws cloudformation describe-stacks --stack-name serverless-saas --query "Stacks[0].Outputs[?OutputKey=='LandingApplicationSite'].OutputValue" --output text)
-  APP_SITE_BUCKET=$(aws cloudformation describe-stacks --stack-name serverless-saas --query "Stacks[0].Outputs[?OutputKey=='ApplicationSiteBucket'].OutputValue" --output text)
-  APP_SITE_URL=$(aws cloudformation describe-stacks --stack-name serverless-saas --query "Stacks[0].Outputs[?OutputKey=='ApplicationSite'].OutputValue" --output text)
+  ADMIN_SITE_URL=$(aws cloudformation describe-stacks --stack-name serverless-saas-lab --query "Stacks[0].Outputs[?OutputKey=='AdminAppSite'].OutputValue" --output text)
+  LANDING_APP_SITE_URL=$(aws cloudformation describe-stacks --stack-name serverless-saas-lab --query "Stacks[0].Outputs[?OutputKey=='LandingApplicationSite'].OutputValue" --output text)
+  APP_SITE_BUCKET=$(aws cloudformation describe-stacks --stack-name serverless-saas-lab --query "Stacks[0].Outputs[?OutputKey=='ApplicationSiteBucket'].OutputValue" --output text)
+  APP_SITE_URL=$(aws cloudformation describe-stacks --stack-name serverless-saas-lab --query "Stacks[0].Outputs[?OutputKey=='ApplicationSite'].OutputValue" --output text)
 fi
 
 if [[ $client -eq 1 ]]; then
   echo "Client code is getting deployed"
-  ADMIN_APIGATEWAYURL=$(aws cloudformation describe-stacks --stack-name serverless-saas --query "Stacks[0].Outputs[?OutputKey=='AdminApi'].OutputValue" --output text)
+  ADMIN_APIGATEWAYURL=$(aws cloudformation describe-stacks --stack-name serverless-saas-lab --query "Stacks[0].Outputs[?OutputKey=='AdminApi'].OutputValue" --output text)
   APP_APIGATEWAYURL=$(aws cloudformation describe-stacks --stack-name stack-pooled --query "Stacks[0].Outputs[?OutputKey=='TenantAPI'].OutputValue" --output text)
-  APP_APPCLIENTID=$(aws cloudformation describe-stacks --stack-name serverless-saas --query "Stacks[0].Outputs[?OutputKey=='CognitoTenantAppClientId'].OutputValue" --output text)
-  APP_USERPOOLID=$(aws cloudformation describe-stacks --stack-name serverless-saas --query "Stacks[0].Outputs[?OutputKey=='CognitoTenantUserPoolId'].OutputValue" --output text)
+  APP_APPCLIENTID=$(aws cloudformation describe-stacks --stack-name serverless-saas-lab --query "Stacks[0].Outputs[?OutputKey=='CognitoTenantAppClientId'].OutputValue" --output text)
+  APP_USERPOOLID=$(aws cloudformation describe-stacks --stack-name serverless-saas-lab --query "Stacks[0].Outputs[?OutputKey=='CognitoTenantUserPoolId'].OutputValue" --output text)
 
 
   # Admin UI and Landing UI are configured in Lab2 

@@ -1,8 +1,8 @@
 <div class="grid-container">
-  <h1 class="mat-h1">Dashboard</h1>
-  <mat-grid-list cols="2" rowHeight="350px">
+  <h1 class="mat-h1">Nginx m6a v/s m6i instances CPI</h1>
+  <mat-grid-list cols="1" rowHeight="350px">
     <mat-grid-tile
-      *ngFor="let card of cards | async"
+      *ngFor="let card of cards0 |async ; let i= index"
       [colspan]="card.cols"
       [rowspan]="card.rows"
     >
@@ -28,7 +28,214 @@
           <div class="chart-wrapper chart-container">
             <canvas
               baseChart
-              [data]="barChartData"
+              [data]="barChartData0"
+              [options]="barChartOptions"
+              [plugins]="barChartPlugins"
+              [type]="barChartType"
+            >
+            </canvas>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+  
+  <h1 class="mat-h1">Nginx m6a v/s m6i instances Latency</h1>
+  <mat-grid-list cols="1" rowHeight="350px">
+    <mat-grid-tile
+      *ngFor="let card of cards1 |async ; let i= index"
+      [colspan]="card.cols"
+      [rowspan]="card.rows"
+    >
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            {{ card.title }}
+            <button
+              mat-icon-button
+              class="more-button"
+              [matMenuTriggerFor]="menu"
+              aria-label="Toggle menu"
+            >
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Expand</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="chart-wrapper chart-container">
+            <canvas
+              baseChart
+              [data]="barChartData1"
+              [options]="barChartOptions"
+              [plugins]="barChartPlugins"
+              [type]="barChartType"
+            >
+            </canvas>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+  
+    <h1 class="mat-h1">Nginx m5i v/s m6i instances CPI</h1>
+  <mat-grid-list cols="1" rowHeight="350px">
+    <mat-grid-tile
+      *ngFor="let card of cards2 |async ; let i= index"
+      [colspan]="card.cols"
+      [rowspan]="card.rows"
+    >
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            {{ card.title }}{{i}}
+            <button
+              mat-icon-button
+              class="more-button"
+              [matMenuTriggerFor]="menu"
+              aria-label="Toggle menu"
+            >
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Expand</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="chart-wrapper chart-container">
+            <canvas
+              baseChart
+              [data]="barChartData2"
+              [options]="barChartOptions"
+              [plugins]="barChartPlugins"
+              [type]="barChartType"
+            >
+            </canvas>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+  
+  <h1 class="mat-h1">Nginx m5i v/s m6i instances Latency</h1>
+  <mat-grid-list cols="1" rowHeight="350px">
+    <mat-grid-tile
+      *ngFor="let card of cards3 |async ; let i= index"
+      [colspan]="card.cols"
+      [rowspan]="card.rows"
+    >
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            {{ card.title }}
+            <button
+              mat-icon-button
+              class="more-button"
+              [matMenuTriggerFor]="menu"
+              aria-label="Toggle menu"
+            >
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Expand</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="chart-wrapper chart-container">
+            <canvas
+              baseChart
+              [data]="barChartData3"
+              [options]="barChartOptions"
+              [plugins]="barChartPlugins"
+              [type]="barChartType"
+            >
+            </canvas>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+  
+  <h1 class="mat-h1">Nginx CPI No SSL v/s SSL</h1>
+  
+  <mat-grid-list cols="1" rowHeight="350px">
+    <mat-grid-tile
+      *ngFor="let card of cards4 |async ; let i= index"
+      [colspan]="card.cols"
+      [rowspan]="card.rows"
+    >
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            {{ card.title }}
+            <button
+              mat-icon-button
+              class="more-button"
+              [matMenuTriggerFor]="menu"
+              aria-label="Toggle menu"
+            >
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Expand</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="chart-wrapper chart-container">
+            <canvas
+              baseChart
+              [data]="barChartData4"
+              [options]="barChartOptions"
+              [plugins]="barChartPlugins"
+              [type]="barChartType"
+            >
+            </canvas>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+  
+  <h1 class="mat-h1">Nginx Latency No SSL v/s SSL</h1>
+
+  <mat-grid-list cols="1" rowHeight="350px">
+    <mat-grid-tile
+      *ngFor="let card of cards5 |async ; let i= index"
+      [colspan]="card.cols"
+      [rowspan]="card.rows"
+    >
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            {{ card.title }}
+            <button
+              mat-icon-button
+              class="more-button"
+              [matMenuTriggerFor]="menu"
+              aria-label="Toggle menu"
+            >
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Expand</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="chart-wrapper chart-container">
+            <canvas
+              baseChart
+              [data]="barChartData5"
               [options]="barChartOptions"
               [plugins]="barChartPlugins"
               [type]="barChartType"

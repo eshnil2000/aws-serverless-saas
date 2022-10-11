@@ -38,14 +38,28 @@ def create_tenant(event, context):
     else:
         return utils.create_success_response("Tenant Created")
 
-def get_tenants(event, context):
+def get_tenant(event, context):
+    tenant_id = event['pathParameters']['tenantid']    
+    logger.info("Request received to get tenant details")
     
-    try:
-        response = table_tenant_details.scan()
-    except Exception as e:
-        raise Exception('Error getting all tenants', e)
-    else:
-        return utils.generate_response(response['Items'])    
+    tenant_details = table_tenant_details.get_item(
+        Key={
+            'tenantId': tenant_id,
+        },
+        AttributesToGet=[
+            'tenantName',
+            'tenantAddress',
+            'tenantEmail',
+            'tenantPhone'
+        ]    
+    )             
+    item = tenant_details['Item']
+    tenant_info = TenantInfo(item['tenantName'], item['tenantAddress'],item['tenantEmail'], item['tenantPhone'])
+    logger.info(tenant_info)
+    
+    logger.info("Request completed to get tenant details")
+    return utils.create_success_response(tenant_info.__dict__)
+  
 
 def update_tenant(event, context):
     
@@ -76,8 +90,6 @@ def update_tenant(event, context):
     return utils.create_success_response("Tenant Updated")    
 
 #TODO: Implement the below method
-def get_tenant(event, context):
-    pass
 
 def deactivate_tenant(event, context):
     

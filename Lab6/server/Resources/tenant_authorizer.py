@@ -50,7 +50,7 @@ def lambda_handler(event, context):
         appclient_id = tenant_details['Item']['appClientId']
         apigateway_url = tenant_details['Item']['apiGatewayUrl']
         #TODO: Get API Key from tenant management table
-        #api_key = tenant_details['Item']['apiKey']
+        api_key = tenant_details['Item']['apiKey']
         
 
     #get keys for tenant user pool to validate
@@ -121,7 +121,7 @@ def lambda_handler(event, context):
         'tenantId': tenant_id,
         'userPoolId': userpool_id,
         #TODO: Assign API Key to authorizer response
-        #'apiKey': api_key,
+        'apiKey': api_key,
         'userRole': user_role
     }
     

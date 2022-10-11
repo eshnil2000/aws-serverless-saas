@@ -78,9 +78,9 @@ if [[ $client -eq 1 ]]; then
   echo "Admin UI and Landing UI are configured in Lab2. App UI is configured in Lab3.
   So, no UI code is built in this Lab4"
   if [ "$IS_RUNNING_IN_EVENT_ENGINE" = false ]; then
-    ADMIN_SITE_URL=$(aws cloudformation describe-stacks --stack-name serverless-saas --query "Stacks[0].Outputs[?OutputKey=='AdminAppSite'].OutputValue" --output text)
-    LANDING_APP_SITE_URL=$(aws cloudformation describe-stacks --stack-name serverless-saas --query "Stacks[0].Outputs[?OutputKey=='LandingApplicationSite'].OutputValue" --output text)
-    APP_SITE_URL=$(aws cloudformation describe-stacks --stack-name serverless-saas --query "Stacks[0].Outputs[?OutputKey=='ApplicationSite'].OutputValue" --output text)
+    ADMIN_SITE_URL=$(aws cloudformation describe-stacks --stack-name serverless-saas-lab --query "Stacks[0].Outputs[?OutputKey=='AdminAppSite'].OutputValue" --output text)
+    LANDING_APP_SITE_URL=$(aws cloudformation describe-stacks --stack-name serverless-saas-lab --query "Stacks[0].Outputs[?OutputKey=='LandingApplicationSite'].OutputValue" --output text)
+    APP_SITE_URL=$(aws cloudformation describe-stacks --stack-name serverless-saas-lab --query "Stacks[0].Outputs[?OutputKey=='ApplicationSite'].OutputValue" --output text)
   fi
   
 
